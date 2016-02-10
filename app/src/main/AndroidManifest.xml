@@ -9,10 +9,37 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+            <!--
+
+            ///////////////////////
+            https://developer.android.com/training/app-links/index.html
+            //////////////////////
+
+            -->
+
+            <!-- android:launchMode="singleTask"> If this is not set, you run the chances of having two instances of your app running if another app launches your app via the custom scheme like we want to do here and if the user manually launches the app later. If you are just showing off a map or sending a tweet, having two instances if not a big deal but other times it may be a big deal especially with using MainActivity that does a lot. -->
+
+            <!-- android:alwaysRetainTaskState="true"> If user launches your app, leaves the app, then opens your app later on manually or from the custom scheme, the state of the app is retained. -->
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" android:host="curiosityio.com"/>
             </intent-filter>
+        </activity>
+
+        <activity android:name=".WebsiteIntentActivity">
+            <!-- This is just a copy of what is above. Demonstrating how any activity can catch the intent. -->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.VIEW" />-->
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+                <!--<category android:name="android.intent.category.BROWSABLE" />-->
+                <!--<data android:scheme="http" android:host="curiosityio.com"/>-->
+            <!--</intent-filter>-->
         </activity>
     </application>
 
